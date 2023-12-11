@@ -8,13 +8,16 @@ data['Date'] = pd.to_datetime(data['Date'])  # Ensure 'Date' is in datetime form
 # Calculate total production
 total_production = data['Toys_Produced'].sum()
 # Calculate average production
-total_production = data['Toys_Produced'].mean()
+mean_production = data['Toys_Produced'].mean()
 
 # Streamlit app layout
 st.title('Santa Toy Production Dashboard')
 
 # Display total production as a metric
 st.metric(label="Total Toys Produced", value=f"{total_production:,}")
+# Display total production as a metric
+st.metric(label="Mean Toys Produced", value=f"{mean_production:,}")
+
 
 # Display the data as a table
 st.write("Toy Production Data:")
