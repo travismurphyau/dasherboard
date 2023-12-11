@@ -7,7 +7,7 @@ data['Date'] = pd.to_datetime(data['Date'])  # Ensure 'Date' is in datetime form
 
 # Calculate total production
 total_production = data['Toys_Produced'].sum()
-# Calculate average production
+# Calculate daily mean production
 mean_production = data['Toys_Produced'].mean()
 
 # Streamlit app layout
