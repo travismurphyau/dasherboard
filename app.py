@@ -5,7 +5,19 @@ import numpy as np
 
 
 # Set page config to wide mode
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
+
+st.set_page_config(
+    page_title="Dasherboard: Santa's Dashboard",
+    page_icon="🎄",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.northpole.com/',
+        'Report a bug': "https://www.northpole.com/",
+        'About': "# Welcome to Santa's performance system. This is an *AWESOME* cool dashboard!"
+    }
+)
 
 
 # Create a main container for the layout
