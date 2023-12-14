@@ -112,20 +112,38 @@ with st.container():
 # Make sure to save this script as a .py file and run it using the Streamlit command
 # To run: streamlit run your_script_name.py
 
-# data frame for maps
+# MAP SECTION data frame for maps
 
+# df3 = pd.DataFrame({
+#     "Latitude": np.random.randn(1000) / 50 + 37.76,
+#     "Longitude": np.random.randn(1000) / 50 + -122.4,
+#     "Presents": np.random.randn(1000) * 100,
+#     "Naughty_Nice_Index": np.random.rand(1000, 4).tolist(),
+# })
+        
+# Creating the DataFrame
 df3 = pd.DataFrame({
-    "col1": np.random.randn(1000) / 50 + 37.76,
-    "col2": np.random.randn(1000) / 50 + -122.4,
-    "col3": np.random.randn(1000) * 100,
-    "col4": np.random.rand(1000, 4).tolist(),
+    "City": ["New York", "London", "Paris", "Tokyo", "Sydney", "Cape Town", "Moscow", "Rio de Janeiro", "Beijing", "Mumbai"],
+    "Latitude": [40.7128, 51.5074, 48.8566, 35.6895, -33.8688, -33.9249, 55.7558, -22.9068, 39.9042, 19.0760],
+    "Longitude": [-74.0060, -0.1278, 2.3522, 139.6917, 151.2093, 18.4241, 37.6173, -43.1729, 116.4074, 72.8777],
+    "Presents": [1,2,3,4,5,6,7,8,9,10],  # Random number of presents
+    "Naughty_Nice_Index": ['#de1a24', '#00ff00','#de1a24', '#00ff00','#de1a24', '#00ff00','#de1a24', '#00ff00','#de1a24', '#00ff00' ]
 })
 
+# st.map(df3,
+# latitude='Latitude',
+# longitude='Longitude',
+# size='Presents',
+# color='Naughty_Nice_Index'
+# )
+
 st.map(df3,
-    latitude='col1',
-    longitude='col2',
-    size='col3',
-    color='col4')
+latitude='Latitude',
+longitude='Longitude',
+size='Presents',
+color='Naughty_Nice_Index'
+
+)
 
 
 # Footer Section
