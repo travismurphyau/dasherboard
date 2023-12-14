@@ -3,19 +3,64 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 # Set page config to wide mode
 st.set_page_config(layout="wide")
 
-# Title and header
-st.title('The DasherBoard')
-st.header("Santa's performance management dashboard 2018")
 
-# KPIs at the top using columns
-kpi1, kpi2, kpi3 = st.columns(3)
-kpi1.metric(label="KPI: Prod P/D%", value="67")
-kpi2.metric(label="KPI: Days to Go", value="18")
-kpi3.metric(label="KPI: Gifts to Go", value="5K")
+# Create a main container for the layout
+main_container = st.container()
 
+# Use the main container to create three columns
+with main_container:
+    # Create three columns
+    logo_col, title_col, header_col = st.columns([1, 3, 3])
+
+    # Place a container with the logo in the first column
+    with logo_col:
+        with st.container(border=True):
+            st.image('/workspaces/dasherboard/reindeer.png')  # Logo image URL
+
+    # Place a container with the title in the second column
+    with title_col:
+        with st.container(border=True):
+            st.title('The DasherBoard')
+
+    # Place a container with the header in the third column
+    with header_col:
+        with st.container(border=True):
+            st.header("Santa's performance management dashboard 2018")
+
+
+# Create a main container
+main_container = st.container(border=True)
+
+# Use the main container to create columns
+with main_container:
+    # Create 4 columns
+    col1, col2, col3, col4 = st.columns(4)
+
+    # Place a container and then a metric in each column
+    with col1:
+        with st.container(border=True):
+            st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+
+    with col2:
+        with st.container(border=True):
+            st.metric(label="Humidity", value="50%", delta="-3%")
+
+    with col3:
+        with st.container(border=True):
+            st.metric(label="Wind Speed", value="15 mph", delta="Travis M", delta_color="off")
+    with col4:
+        with st.container(border=True):
+            st.metric(label="Employee of Month", value="Travis M", delta="First Time Wiiner", delta_color="off")
+
+# # KPIs at the top using columns
+# kpi1, kpi2, kpi3 = st.columns(3)
+# kpi1.metric(label="KPI: Prod P/D%", value="67")
+# kpi2.metric(label="KPI: Days to Go", value="18")
+# kpi3.metric(label="KPI: Gifts to Go", value="5K")
 # Sample data for the reindeer performance
 reindeer_performance_data = {
     'Reindeer': ['Dasher', 'Dancer', 'Rudolph'],
@@ -54,3 +99,29 @@ with st.container():
 
 # Make sure to save this script as a .py file and run it using the Streamlit command
 # To run: streamlit run your_script_name.py
+
+# data frame for maps
+
+df3 = pd.DataFrame({
+    "col1": np.random.randn(1000) / 50 + 37.76,
+    "col2": np.random.randn(1000) / 50 + -122.4,
+    "col3": np.random.randn(1000) * 100,
+    "col4": np.random.rand(1000, 4).tolist(),
+})
+
+st.map(df3,
+    latitude='col1',
+    longitude='col2',
+    size='col3',
+    color='col4')
+
+
+# Footer Section
+
+
+# Create a container
+container = st.container(border=True)
+
+# Use the container to display the metric
+with container:
+    st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
